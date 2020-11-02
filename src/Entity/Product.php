@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Product
 {
-    //const PRECISION = 2;
+    const PRECISION = 2;
 
     /**
      * @ORM\Id
@@ -54,8 +54,8 @@ class Product
 
     public function setPrice(float $price): self
     {
-        //$this->price = round($price, self::PRECISION);
-        $this->price = $price;
+        $this->price = round($price, self::PRECISION);
+        //$this->price = $price;
 
         return $this;
     }
@@ -65,7 +65,7 @@ class Product
         $arr = [
             'id' => $this->getId(),
             'name' => $this->getName(),
-            'price' => $this->getPrice()
+            'price' => sprintf('%.2f', $this->getPrice())
         ];
         return json_encode($arr);
     }

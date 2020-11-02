@@ -11,15 +11,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a68b2f2-3dc6-404c-83b5-49d9d63f7a28" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/OrderController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/ProductController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Order.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Product.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/OrderRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/ProductRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +118,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../inspirify/inspirfy_repo" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -137,7 +134,7 @@
       <workItem from="1604268895183" duration="22000" />
       <workItem from="1604312832156" duration="497000" />
       <workItem from="1604313342994" duration="696000" />
-      <workItem from="1604314914615" duration="3307000" />
+      <workItem from="1604314914615" duration="20317000" />
     </task>
     <task id="LOCAL-00001" summary="Initial project commit">
       <created>1604314961018</created>
@@ -146,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604314961018</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Project update">
+      <created>1604319337836</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1604319337836</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,9 +170,22 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial project commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial project commit" />
+    <MESSAGE value="Project update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Project update" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="194" y="254" key="#SQL_Dialects" timestamp="1604340934119">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="194" y="254" key="#SQL_Dialects/0.0.1536.824@0.0.1536.824" timestamp="1604340934119" />
+    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1604340577137">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1604340577137" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1604341466609">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1604341466609" />
     <state x="604" y="336" key="NewPhpFileDialog" timestamp="1604317632597">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

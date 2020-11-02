@@ -44,7 +44,7 @@ class Order
     {
         $arr = [
             'id' => $this->getId(),
-            'totalPrice' => $this->gettotalPrice()
+            'totalPrice' => sprintf('%.2f', $this->gettotalPrice())
         ];
         return json_encode($arr);
     }

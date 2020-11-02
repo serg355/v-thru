@@ -10,6 +10,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use App\Entity\Order;
 use App\Repository\OrderRepository;
+use App\Repository\ProductRepository;
 
 class OrderController extends AbstractController
 {
@@ -26,15 +27,40 @@ class OrderController extends AbstractController
         return new Response($order->__toString());
     }
 
-    public function readOrder(int $orderID)
+    public function readOrder(
+        int $orderId,
+        EntityManagerInterface $entityManager,
+        OrderRepository $orderRepository,
+        ProductRepository $productRepository
+    )
     {
+        $order = $orderRepository->findOneBy(['id' => $orderId]);
 
+        $conn = $entityManager->getConnection();
+        $sql = '
+            SELECT pio.product_id AS id, pio.quantity AS quantity 
+            FROM products_in_orders pio
+            WHERE pio.order_id = :orderId
+            ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['orderId' => $orderId]);
+        $products = $stmt->fetchAll();
 
-        return new Response('reading order '.$orderID);
+        $arr = [
+            'id' => $orderId,
+            'totalPrice' => sprintf('%.2f', $order->getTotalPrice()),
+            'products' => []
+        ];
+        foreach($products as $product){
+            array_push($arr['products'], $product);
+        }
+
+        return new Response(json_encode($arr));
     }
 
     public function addProductToOrder(
         OrderRepository $orderRepository,
+        ProductRepository $productRepository,
         EntityManagerInterface $entityManager,
         RequestStack $requestStack
     )
@@ -42,18 +68,43 @@ class OrderController extends AbstractController
         $request = $requestStack->getCurrentRequest();
         $data = json_decode($request->getContent());
 
-        //dd($data->products);
-        foreach($data->products as $product){
+        //Order Object from DB
+        $orderInDB = $orderRepository->findOneBy(['id' => $data->id]);
+        $orderInDB->setTotalPrice(0);
 
+        $conn = $entityManager->getConnection();
+        foreach($data->products as $product){
+            //Product Object from DB
+            $productInDB = $productRepository->findOneBy(['id' => $product->id]);
+
+            //Update Order Object from DB
+            $orderInDB->setTotalPrice(
+                $orderInDB->getTotalPrice() +
+                $productInDB->getPrice() * $product->quantity
+            );
+
+            //Delete row in DB
+            $sql = '
+                DELETE FROM products_in_orders
+                WHERE order_id = :orderId AND product_id = :productId
+                ';
+            $stmt = $conn->prepare($sql);
+            $stmt->execute(['orderId' => $data->id, 'productId' => $product->id]);
+
+            //Add row in DB
+            $sql = '
+                INSERT INTO products_in_orders (order_id, product_id, quantity)
+                VALUES (:orderId, :productId, :quantity)
+                ';
+            $stmt = $conn->prepare($sql);
+            $stmt->execute(['orderId' => $data->id, 'productId' => $product->id, 'quantity' => $product->quantity]);
         }
 
+        $entityManager->persist($orderInDB);
+        $entityManager->flush();
 
-        $query = $entityManager->createQuery(
-
-        );
-
-
-        return new Response('adding products to order');
+        return new Response($this->readOrder($data->id, $entityManager, $orderRepository, $productRepository)
+            ->getContent());
     }
 
 

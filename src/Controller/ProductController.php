@@ -13,13 +13,14 @@ use App\Repository\ProductRepository;
 
 class ProductController extends AbstractController
 {
-    const PRECISION = 2;
+    //const PRECISION = 2;
 
     public function createProduct(
         ProductRepository $productRepository,
         EntityManagerInterface $entityManager,
         RequestStack $requestStack)
     {
+
         $request = $requestStack->getCurrentRequest();
         $data = json_decode($request->getContent());
 
@@ -34,7 +35,8 @@ class ProductController extends AbstractController
 
         $product = new Product();
         $product->setName($data->name);
-        $product->setPrice(round($data->price, self::PRECISION));
+        //$product->setPrice(round($data->price, self::PRECISION));
+        $product->setPrice($data->price);
 
         $entityManager->persist($product);
         $entityManager->flush();

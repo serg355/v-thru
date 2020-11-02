@@ -18,6 +18,6 @@ add_product_to_order:
   methods: ['POST']
 
 read_order:
-  path: order/{orderID}
+  path: order/{orderId}
   controller: App\Controller\OrderController::readOrder
   methods: ['GET']
