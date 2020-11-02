@@ -36,6 +36,10 @@ class OrderController extends AbstractController
     {
         $order = $orderRepository->findOneBy(['id' => $orderId]);
 
+        if(!$order){
+            return new Response('Order doesn\'t exists');
+        }
+
         $conn = $entityManager->getConnection();
         $sql = '
             SELECT pio.product_id AS id, pio.quantity AS quantity 
