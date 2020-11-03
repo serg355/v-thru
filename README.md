@@ -1,10 +1,12 @@
-<h1>Установка</h1>
-<p>Клонируйте репозиторий в папку v_thru.</p>
-<p>Исполльзуйте composer для установки Symfony и пакетов используя готовый файл composer.json.</p>
-<p>В задаче используется PHP 7.2.34</p>
+<h1>Requirements</h1>
+<p>PHP 7.2.34 or higher.</p>
 
-<h1>Описание</h1>
-<p>Тестирование эндпоинтов проводил через Postman</>
+<h1>Installation</h1>
+<p>Clone the repository to a folder v_thru.</p>
+<p>Use composer to install Symfony and packages using the composer.json file.</p>
+
+<h1>Description</h1>
+<p>Endpoint testing was done in Postman</>
 
 <h3>Create a new Product</h3>
 <p>POST /product</p>
